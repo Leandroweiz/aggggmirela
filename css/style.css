@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap');
 
-/* ===== CONFIGURAÇÕES GERAIS ===== */
+/* ===== CONFIGURAÇÕES GERAIS REFORÇADAS ===== */
 *{
     margin: 0;
     padding: 0;
@@ -21,41 +21,60 @@ body{
     );
     color: white;
     min-height: 100vh;
+    overflow-x: hidden; /* Evita barras de rolagem horizontal indesejadas */
+}
+
+/* Regra de ouro para imagens nunca quebrarem o layout */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 section {
     padding: 80px 10%;
+    text-align: center; /* Centraliza o conteúdo padrão das seções */
 }
 
 section h2 {
     font-family: 'Cinzel', serif;
     color: #FFD54F;
     margin-bottom: 25px;
+    font-size: clamp(1.8rem, 4vw, 2.8rem); /* Texto fluido e chamativo */
+    text-align: center;
 }
 
 /* ===== HERO (PÁGINA PRINCIPAL) ===== */
 .hero {
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 20px;
+    padding: 40px 20px;
     position: relative;
+}
+
+.hero-content {
+    width: 100%;
+    max-width: 1000px;
 }
 
 .hero-content h1 {
     font-family: 'Cinzel', serif;
-    font-size: 5rem;
+    /* clamp(tamanho_minimo, tamanho_ideal, tamanho_maximo) */
+    font-size: clamp(2.5rem, 8vw, 5rem); 
     color: #FFD54F;
     margin-bottom: 20px;
     text-shadow: 0 0 20px rgba(255, 213, 79, 0.5);
+    line-height: 1.2;
 }
 
 .slogan {
-    font-size: 1.3rem;
+    font-size: clamp(1rem, 2vw, 1.3rem);
     max-width: 700px;
     margin: 0 auto 30px;
+    line-height: 1.6;
 }
 
 #enter-btn {
@@ -68,7 +87,7 @@ section h2 {
     border-radius: 40px;
     font-size: 1rem;
     cursor: pointer;
-    transition: 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 #enter-btn:hover {
@@ -82,14 +101,16 @@ section h2 {
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 20px;
-    padding: 30px;
+    padding: clamp(20px, 5vw, 40px);
     max-width: 900px;
     margin: auto;
+    text-align: center; /* Centraliza os parágrafos internos */
 }
 
 .gaia-box p {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     line-height: 1.8;
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
 }
 
 .video-btn {
@@ -101,7 +122,7 @@ section h2 {
     text-decoration: none;
     border-radius: 30px;
     font-weight: bold;
-    transition: .3s;
+    transition: 0.3s;
 }
 
 .video-btn:hover {
@@ -111,9 +132,11 @@ section h2 {
 /* ===== PORTAIS (CARDS) ===== */
 .cards-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* auto-fit cria colunas dinâmicas dependendo do espaço da tela */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
     margin-top: 40px;
+    width: 100%;
 }
 
 .card {
@@ -135,52 +158,58 @@ section h2 {
 
 .card h3 {
     margin-top: 15px;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    color: #FFD54F;
+}
+
+.card p {
+    margin-top: 10px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    opacity: 0.9;
 }
 
 /* ===== ÁRVORE GAIA ===== */
 .arvore-section {
     text-align: center;
-    padding: 60px 20px;
+    padding: 60px 10%;
 }
 
 .arvore-gaia {
     width: 400px;
-    max-width: 90%;
+    max-width: 85%; /* Garante que ela encolha perfeitamente em telas móveis */
     height: auto;
     display: block;
     margin: 30px auto;
     animation: brilhoArvore 4s infinite ease-in-out;
 }
 
-.arvore-section h2 {
-    color: #FFD54F;
-    margin-bottom: 15px;
-}
-
 .arvore-section p {
     max-width: 700px;
     margin: auto;
     line-height: 1.8;
+    font-size: clamp(0.95rem, 1.5vw, 1.1rem);
 }
 
-/* ===== PAGINAS INTERNAS: ESTRUTURA ===== */
+/* ===== PÁGINAS INTERNAS: ESTRUTURA ===== */
 .portal-banner {
     text-align: center;
-    padding: 120px 20px 80px;
+    padding: clamp(100px, 15vh, 140px) 20px 60px;
 }
 
 .portal-banner h1 {
     font-family: 'Cinzel', serif;
-    font-size: 4rem;
+    font-size: clamp(2.2rem, 6vw, 4rem);
     color: #FFD54F;
     margin-bottom: 20px;
+    line-height: 1.2;
 }
 
 .portal-banner p {
     max-width: 800px;
     margin: auto;
-    font-size: 1.2rem;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    line-height: 1.6;
 }
 
 .gaia-guide {
@@ -189,7 +218,7 @@ section h2 {
     gap: 30px;
     align-items: center;
     justify-content: center;
-    padding: 60px 10%;
+    padding: 40px 10%;
 }
 
 .gaia-avatar {
@@ -201,19 +230,13 @@ section h2 {
     align-items: center;
     justify-content: center;
     padding: 10px;
+    flex-shrink: 0; /* Impede o círculo de achatar */
 }
 
 .gaia-avatar img {
     width: 150px;
     height: auto;
-    display: block;
-    margin: auto;
-    transition: 0.3s;
     animation: flutuar 3s ease-in-out infinite;
-}
-
-.gaia-avatar img:hover {
-    transform: scale(1.05);
 }
 
 .gaia-message {
@@ -221,13 +244,19 @@ section h2 {
     background: rgba(255, 255, 255, 0.05);
     border-radius: 20px;
     padding: 30px;
+    text-align: center; /* Centraliza a fala da assistente */
+}
+
+.gaia-message p {
+    line-height: 1.7;
+    font-size: 1rem;
 }
 
 .info-cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
-    padding: 60px 10%;
+    padding: 40px 10%;
 }
 
 .info-card {
@@ -235,7 +264,18 @@ section h2 {
     border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 20px;
     padding: 25px;
-    transition: .3s;
+    text-align: center; /* Centraliza os cards informativos */
+    transition: 0.3s;
+}
+
+.info-card h3 {
+    color: #FFD54F;
+    margin-bottom: 12px;
+}
+
+.info-card p {
+    line-height: 1.6;
+    font-size: 0.95rem;
 }
 
 .info-card:hover {
@@ -245,23 +285,24 @@ section h2 {
 
 .future-message {
     text-align: center;
-    padding: 80px 10%;
+    padding: 60px 10%;
 }
 
-.future-message h2 {
-    color: #FFD54F;
-    margin-bottom: 20px;
+.future-message p {
+    max-width: 750px;
+    margin: auto;
+    line-height: 1.7;
 }
 
 /* ===== PÁGINA: MISSAL ===== */
 .missal-gallery {
     text-align: center;
-    padding: 80px 10%;
+    padding: 60px 10%;
 }
 
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
     margin-top: 40px;
 }
@@ -273,6 +314,11 @@ section h2 {
     border-radius: 20px;
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s;
+}
+
+.gallery img:hover {
+    transform: scale(1.03);
 }
 
 /* ===== PÁGINA: AUTOR ===== */
@@ -282,7 +328,7 @@ section h2 {
     align-items: center;
     justify-content: center;
     gap: 40px;
-    padding: 60px 10%;
+    padding: 40px 10%;
 }
 
 .autor-photo img {
@@ -291,6 +337,7 @@ section h2 {
     object-fit: cover;
     border-radius: 50%;
     border: 4px solid #FFD54F;
+    box-shadow: 0 0 20px rgba(255, 213, 79, 0.2);
 }
 
 .autor-info {
@@ -298,31 +345,43 @@ section h2 {
     background: rgba(255, 255, 255, 0.05);
     padding: 30px;
     border-radius: 20px;
+    text-align: center; /* Mantém as informações do Nicolas organizadas e centradas */
+}
+
+.autor-info h2 {
+    text-align: center;
+}
+
+.autor-info p {
+    line-height: 1.7;
+    margin-top: 15px;
 }
 
 .creator-gallery {
     text-align: center;
-    padding: 80px 10%;
+    padding: 60px 10%;
 }
 
 /* ===== SISTEMA DE BOTÕES DE IR E VOLTAR ===== */
 .navigation-buttons, .final-button {
     text-align: center;
-    padding: 40px 20px 80px;
+    padding: 40px 20px 60px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     gap: 15px;
 }
 
 .portal-return {
     display: inline-block;
-    padding: 12px 30px;
+    padding: 14px 35px;
     border-radius: 50px;
     text-decoration: none;
     color: white;
     font-weight: bold;
     transition: 0.3s;
+    text-align: center;
 }
 
 .portal-return:hover {
@@ -341,7 +400,7 @@ section h2 {
     justify-content: center;
     opacity: 0;
     visibility: hidden;
-    transition: .6s;
+    transition: opacity 0.6s, visibility 0.6s;
     z-index: 9999;
 }
 
@@ -374,6 +433,7 @@ section h2 {
     margin-top: 30px;
     color: white;
     font-size: 1.2rem;
+    text-align: center;
 }
 
 .portal-message {
@@ -383,6 +443,7 @@ section h2 {
 
 .portal-message img {
     width: 120px;
+    margin: auto;
     animation: flutuar 2s infinite ease-in-out;
 }
 
@@ -395,7 +456,7 @@ section h2 {
 
 @keyframes brilhoArvore {
     0% { filter: drop-shadow(0 0 10px rgba(255, 213, 79, .3)); }
-    50% { filter: drop-shadow(0 0 30px rgba(255, 213, 79, .7)); }
+    50% { filter: drop-shadow(0 0 25px rgba(255, 213, 79, .6)); }
     100% { filter: drop-shadow(0 0 10px rgba(255, 213, 79, .3)); }
 }
 
@@ -412,29 +473,44 @@ section h2 {
 
 @keyframes portalPulseContainer {
     0% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+    50% { transform: scale(1.08); }
     100% { transform: scale(1); }
 }
 
-/* ===== RESPONSIVIDADE ===== */
+/* ===== RESPONSIVIDADE ADAPTATIVA (MEDIA QUERIES) ===== */
 @media(max-width: 768px){
-    .hero-content h1 {
-        font-size: 3rem;
+    section {
+        padding: 50px 6%; /* Reduz o espaçamento lateral em telas menores */
     }
-    .slogan {
-        font-size: 1rem;
-    }
-    .portal-banner h1 {
-        font-size: 2.5rem;
-    }
+    
     .gaia-guide {
-        padding: 40px 5%;
+        padding: 30px 4%;
+        flex-direction: column; /* Faz o avatar ficar em cima e o texto embaixo no celular */
     }
+    
     .navigation-buttons {
         flex-direction: column;
         align-items: center;
+        width: 100%;
     }
+    
     .portal-return {
-        width: 90%;
+        width: 100%; /* Botões ocupam a largura total disponível no celular, facilitando o toque */
+        max-width: 320px;
+    }
+    
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Trata melhor telas menores */
+    }
+}
+
+@media(max-width: 480px){
+    section {
+        padding: 40px 4%;
+    }
+    
+    .autor-photo img {
+        width: 180px;
+        height: 180px; /* Reduz a foto do perfil em celulares antigos/pequenos */
     }
 }
